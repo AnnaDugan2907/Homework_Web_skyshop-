@@ -46,23 +46,11 @@ public class ShopController {
         return searchService.search(pattern);
     }
 
-//    @GetMapping("/shop/basket/{id}")
-//    public String addProduct(@PathVariable("id") UUID id, HttpSession session) {
-//        basketService.addProductToBasket(id, session);
-//        return "Продукт успешно добавлен";
-//    }
-
     @GetMapping("/shop/basket/{id}")
     public String addProduct(@PathVariable("id") UUID id) {
         basketService.addProductToBasket(id);
         return "Продукт успешно добавлен";
     }
-
-//    @GetMapping("/shop/basket")
-//    public UserBasket getUserBasket(HttpSession session) {
-//        return basketService.getUserBasket(session);
-//    }
-
 
     @GetMapping("/shop/basket")
     public UserBasket getUserBasket() {
