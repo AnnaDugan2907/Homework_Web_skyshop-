@@ -73,8 +73,11 @@ public class StorageService {
         return productStorage.values();
     }
 
-    public Optional<Product> getProductById(UUID id) {
-        return Optional.ofNullable(productStorage.get(id));
+    public Product getProductById(UUID id) {
+        Product product = productStorage.get(id);
+        if (product == null) {
+            throw new NoSuchProductException("Продукт с id " + id + " не найден");
+        }
+        return product;
     }
-
 }
